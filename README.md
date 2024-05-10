@@ -2,6 +2,7 @@
 안드로이드스튜디오 단축키
 auto indent: cmd + alt + L
 new file: 없음.
+Parameter info: cmd + P
 
 트러블슈팅
 https://velog.io/@qkrtnfks128/FlutterListdynamic-is-not-a-subtype-of-type-ListString
@@ -28,8 +29,12 @@ ListView내부에 TextField 만들때 TextController 계속 만드는 방식 별
 Row하나에 StatefulWidget을 생성해서 추가하는 방식이 더 나음. 이유도 설명함.
 https://stackoverflow.com/a/52235278
 
-TextFiled 문서
+TextFiled
 - https://docs.flutter.dev/cookbook/forms/text-field-changes
+GestureDetector
+- https://api.flutter.dev/flutter/widgets/GestureDetector-class.html
+ShowDialog
+- https://api.flutter.dev/flutter/material/showDialog.html
 
 
 Materials
