@@ -1,4 +1,28 @@
 # flutter-study
+안드로이드스튜디오 단축키
+auto indent: cmd + alt + L
+new file: 없음.
+
+트러블슈팅
+https://velog.io/@qkrtnfks128/FlutterListdynamic-is-not-a-subtype-of-type-ListString
+
+return Widget안하고
+그냥 Widget하면 뷰 안그려짐
+Container앞에 return 붙여야 한다.
+
+```dart
+ListView.builder(
+  padding:const EdgeInsets.all(8),
+  itemCount: todos.length,
+  itemBuilder: (BuildContext context, int index) {
+    return Container(
+        height: 50,
+        color: Colors.amber[colorCodes[index]],
+        child: Center(child: Text('TODO: ${todos[index]}'))
+    );
+  }),
+```
+
 https://medium.com/@yamen.abd98/clean-architecture-in-flutter-mvvm-bloc-dio-79b1615530e1
 
 https://github.com/guilherme-v/flutter-clean-architecture-example?tab=readme-ov-file
