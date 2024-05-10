@@ -28,6 +28,10 @@ ListView내부에 TextField 만들때 TextController 계속 만드는 방식 별
 Row하나에 StatefulWidget을 생성해서 추가하는 방식이 더 나음. 이유도 설명함.
 https://stackoverflow.com/a/52235278
 
+TextFiled 문서
+- https://docs.flutter.dev/cookbook/forms/text-field-changes
+
+
 Materials
 - https://medium.com/@yamen.abd98/clean-architecture-in-flutter-mvvm-bloc-dio-79b1615530e1
 - https://github.com/guilherme-v/flutter-clean-architecture-example?tab=readme-ov-file
