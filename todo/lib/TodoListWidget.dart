@@ -14,29 +14,22 @@ class TodoListWidget extends StatefulWidget {
 class _TodoListState extends State<TodoListWidget> {
   List<String> todos = <String>[];
   final TextEditingController _textController = TextEditingController();
+
+
   void _addNewTodo() {
     print(_textController.text);
     todos.add(_textController.text);
     _textController.text = '';
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("TODO"),
-        actions: [
-          IconButton(
-              onPressed: () {
-
-              },
-              icon: const Icon(Icons.add))
-        ],
-      ),
-      body: Column(
+    return Column(
         children: [
           SizedBox(
-              height: 600,
+              height: 550,
               child: ListView.builder(
                 padding: const EdgeInsets.all(8),
                 itemCount: todos.length,
@@ -62,7 +55,6 @@ class _TodoListState extends State<TodoListWidget> {
             },
           )
         ]
-      )
-    );
+      );
   }
 }
