@@ -29,12 +29,7 @@ class _TabViewWidgetState extends State<TabViewWidget> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("TODO"),
-          actions: [
-            IconButton(
-              onPressed: () { },
-              icon: const Icon(Icons.add)
-            )
-          ],
+          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
         ),
         body: Center(
           child: _tabPages.elementAt(_selectedIndex),
@@ -46,7 +41,6 @@ class _TabViewWidgetState extends State<TabViewWidget> {
             BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorite')
           ],
           onTap: _onItemTapped,
-      )
-    );
+        ));
   }
 }

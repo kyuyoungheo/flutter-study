@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TodoRowWidget extends StatelessWidget {
-  const TodoRowWidget({ super.key, required this.text });
+  const TodoRowWidget({super.key, required this.text});
+
   final String text;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -12,15 +14,14 @@ class TodoRowWidget extends StatelessWidget {
             const Spacer(),
             OutlinedButton(
                 onPressed: () {
-                print("Done");
+                  print("Done");
                 },
-                child: const Text("Done")
-            )
+                child: const Text("Done"))
           ],
         ),
         onTap: () {
           // _dialogBuilder(context, text);
-    });
+        });
   }
 
   Future<void> _dialogBuilder(BuildContext context, String text) {
@@ -29,16 +30,11 @@ class TodoRowWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(text),
-          content: const Text(
-            'Hello, World!'
-          ),
+          content: const Text('Hello, World!'),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
-                textStyle: Theme
-                    .of(context)
-                    .textTheme
-                    .labelLarge,
+                textStyle: Theme.of(context).textTheme.labelLarge,
               ),
               child: const Text('Disable'),
               onPressed: () {
