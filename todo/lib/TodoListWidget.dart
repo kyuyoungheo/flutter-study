@@ -28,9 +28,7 @@ class _TodoListState extends State<TodoListWidget> {
         actions: [
           IconButton(
               onPressed: () {
-                setState(() {
-                  _addNewTodo();
-                });
+
               },
               icon: const Icon(Icons.add))
         ],
@@ -51,7 +49,18 @@ class _TodoListState extends State<TodoListWidget> {
                 }
               ),
           ),
-          TextField(controller: _textController)
+          TextField(
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Enter todo"
+            ),
+            controller: _textController,
+            onSubmitted: (value) {
+              setState(() {
+                _addNewTodo();
+              });
+            },
+          )
         ]
       )
     );

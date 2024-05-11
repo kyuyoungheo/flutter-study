@@ -6,9 +6,20 @@ class TodoRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Text(text),
+        child: Row(
+          children: [
+            Text(text),
+            const Spacer(),
+            OutlinedButton(
+                onPressed: () {
+                print("Done");
+                },
+                child: const Text("Done")
+            )
+          ],
+        ),
         onTap: () {
-          _dialogBuilder(context, text);
+          // _dialogBuilder(context, text);
     });
   }
 
