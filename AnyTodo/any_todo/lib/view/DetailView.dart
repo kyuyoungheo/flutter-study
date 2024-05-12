@@ -1,9 +1,10 @@
+import 'package:any_todo/model/todo.dart';
 import 'package:flutter/material.dart';
 
 class DetailView extends StatelessWidget {
   const DetailView({super.key, required this.todo});
 
-  final String todo;
+  final Todo todo;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class DetailView extends StatelessWidget {
       ),
       child: Container(
       padding: const EdgeInsets.fromLTRB(100, 30, 0, 0),
-        child:  Text(todo, style: const TextStyle(fontSize: 30),)
+        child:  Text(todo.title, style: const TextStyle(fontSize: 30),)
       )
     );
   }

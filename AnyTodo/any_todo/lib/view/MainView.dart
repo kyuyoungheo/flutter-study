@@ -1,9 +1,7 @@
-import 'dart:ffi';
 import 'dart:ui';
-
+import 'package:any_todo/model/todo.dart';
+import 'package:any_todo/view/widget/todoCell.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'DetailView.dart';
 
 class MainView extends StatefulWidget {
@@ -14,7 +12,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  final List<String> todos = ['머리감기', '여행가기'];
+  final List<Todo> todos = [Todo('머리감기', false), Todo('놀러가기', false)];
   final TextEditingController _textController = TextEditingController();
 
   @override
@@ -63,16 +61,10 @@ class _MainViewState extends State<MainView> {
               height: 50,
               child: TextButton(
                 onPressed: () {
-                  showModalBottomSheet(context: context, builder: (BuildContext context) =>  DetailView(todo: todos[index]));
+                  showModalBottomSheet(context: context, builder: (BuildContext context) => DetailView(todo: todos[index]));
                 },
-                child:  Text(
-                  todos[index],
-                  style: const TextStyle(
-                      backgroundColor: Colors.orange, color: Colors.white),
-                ),
-              )
-
-             ,
+                child: TodoCell(todo: todos[index]),
+              ),
             );
           },
         ),
@@ -82,7 +74,6 @@ class _MainViewState extends State<MainView> {
           onSubmitted: addTodo,
           decoration: const InputDecoration(
               labelText: '텍스트 입력',
-              hintText: '텍스트를 입력해주세요',
               border: OutlineInputBorder()),
         )
       ]),
@@ -91,7 +82,7 @@ class _MainViewState extends State<MainView> {
 
   void addTodo(String text) {
     _textController.clear();
-    todos.add(text);
+    todos.add(Todo(text, false));
     setState(() {});
   }
 }
