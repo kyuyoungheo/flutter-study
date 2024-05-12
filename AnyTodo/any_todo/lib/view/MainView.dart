@@ -1,7 +1,10 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'DetailView.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -12,7 +15,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final List<String> todos = ['머리감기', '여행가기'];
-  final TextEditingController _textController = new TextEditingController();
+  final TextEditingController _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,10 @@ class _MainViewState extends State<MainView> {
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.blue,
-                          fontWeight: FontWeight.bold)),
-                  Text('+', style: TextStyle(color: Colors.white))
+                          fontWeight: FontWeight.bold)
+                  ),
+                   Spacer(),
+                   Text('+', style: TextStyle(color: Colors.white))
                 ])),
         ListView.builder(
           shrinkWrap: true,
@@ -56,11 +61,18 @@ class _MainViewState extends State<MainView> {
             return Container(
               width: width,
               height: 50,
-              child: Text(
-                todos[index],
-                style: const TextStyle(
-                    backgroundColor: Colors.orange, color: Colors.white),
-              ),
+              child: TextButton(
+                onPressed: () {
+                  showModalBottomSheet(context: context, builder: (BuildContext context) =>  DetailView(todo: todos[index]));
+                },
+                child:  Text(
+                  todos[index],
+                  style: const TextStyle(
+                      backgroundColor: Colors.orange, color: Colors.white),
+                ),
+              )
+
+             ,
             );
           },
         ),
