@@ -2,19 +2,21 @@ import 'package:any_todo/model/todo.dart';
 import 'package:flutter/material.dart';
 
 class TodoCell extends StatefulWidget {
-  const TodoCell({super.key, required this.todo});
+  const TodoCell({super.key, required this.todo, required this.onDeleted});
 
   final Todo todo;
+  final Function() onDeleted;
 
   @override
-  State<TodoCell> createState() => _TodoCellState(todo);
+  State<TodoCell> createState() => _TodoCellState(todo, onDeleted);
 }
 
 class _TodoCellState extends State<TodoCell> {
   final Todo todo;
   bool _isChecked = false;
+  final Function() onDeleted;
 
-  _TodoCellState(this.todo);
+  _TodoCellState(this.todo, this.onDeleted);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,12 @@ class _TodoCellState extends State<TodoCell> {
                   : TextDecoration.none,
               decorationColor: Colors.white,
               decorationThickness: 2),
-        )
+        ),
+         const Spacer(),
+         IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () { onDeleted; },
+        ),
       ],
     );
   }

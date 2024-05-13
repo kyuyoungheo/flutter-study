@@ -65,7 +65,10 @@ class _MainViewState extends State<MainView> {
                   onPressed: () {
                     showModalBottomSheet(context: context, builder: (BuildContext context) => DetailView(todo: todos[index]));
                   },
-                  child: TodoCell(todo: todos[index]),
+                  child: TodoCell(todo: todos[index],
+                    onDeleted: () {
+                    deleteTodo(index);
+                  },),
                 ),
               );
             },
@@ -90,5 +93,12 @@ class _MainViewState extends State<MainView> {
     _textController.clear();
     todos.add(Todo(text, false));
     setState(() {});
+  }
+
+  void deleteTodo(int index) {
+    print('ggg');
+    todos.removeAt(index);
+    setState(() {});
+    print(todos);
   }
 }
