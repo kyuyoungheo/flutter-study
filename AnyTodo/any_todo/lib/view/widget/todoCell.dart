@@ -1,6 +1,6 @@
-
 import 'package:any_todo/model/todo.dart';
 import 'package:flutter/material.dart';
+
 class TodoCell extends StatefulWidget {
   const TodoCell({super.key, required this.todo});
 
@@ -20,15 +20,24 @@ class _TodoCellState extends State<TodoCell> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(value: _isChecked, onChanged: (value) {
-          setState(() {
-            _isChecked = value!; //  언래핑 이게 최선?
-          });
-        }),
-      Text(
-      todo.title,
-      style: const TextStyle(color: Colors.white),
-    )
+        Checkbox(
+            value: _isChecked,
+            onChanged: (value) {
+              todo.isDone = value ?? false;
+              setState(() {
+                _isChecked = value ?? false; //  언래핑 이게 최선?
+              });
+            }),
+        Text(
+          todo.title,
+          style: TextStyle(
+              color: Colors.white,
+              decoration: todo.isDone
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              decorationColor: Colors.white,
+              decorationThickness: 2),
+        )
       ],
     );
   }

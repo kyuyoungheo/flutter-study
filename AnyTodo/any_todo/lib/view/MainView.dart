@@ -37,7 +37,7 @@ class _MainViewState extends State<MainView> {
       ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
-            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -45,36 +45,42 @@ class _MainViewState extends State<MainView> {
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.blue,
-                          fontWeight: FontWeight.bold)
+                          fontWeight: FontWeight.bold
+                      )
                   ),
                    Spacer(),
                    Text('+', style: TextStyle(color: Colors.white))
                 ])),
-        ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          padding: const EdgeInsets.all(10),
-          itemCount: todos.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              width: width,
-              height: 50,
-              child: TextButton(
-                onPressed: () {
-                  showModalBottomSheet(context: context, builder: (BuildContext context) => DetailView(todo: todos[index]));
-                },
-                child: TodoCell(todo: todos[index]),
-              ),
-            );
-          },
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            padding: const EdgeInsets.all(10),
+            itemCount: todos.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                width: width,
+                height: 50,
+                child: TextButton(
+                  onPressed: () {
+                    showModalBottomSheet(context: context, builder: (BuildContext context) => DetailView(todo: todos[index]));
+                  },
+                  child: TodoCell(todo: todos[index]),
+                ),
+              );
+            },
+          ),
         ),
-        TextField(
-          style: const TextStyle(color: Colors.white),
-          controller: _textController,
-          onSubmitted: addTodo,
-          decoration: const InputDecoration(
-              labelText: '텍스트 입력',
-              border: OutlineInputBorder()),
+        Container(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 30),
+          child: TextField(
+            style: const TextStyle(color: Colors.white),
+            controller: _textController,
+            onSubmitted: addTodo,
+            decoration: const InputDecoration(
+                labelText: '텍스트 입력',
+                border: OutlineInputBorder()),
+          ),
         )
       ]),
     );
