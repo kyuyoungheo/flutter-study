@@ -16,11 +16,12 @@ class TodoRowWidget extends StatelessWidget {
                 onPressed: () {
                   print("Done");
                 },
-                child: const Text("Done"))
+                child: const Text("Done")
+            )
           ],
         ),
         onTap: () {
-          // _dialogBuilder(context, text);
+          _dialogBuilder(context, text);
         });
   }
 
@@ -30,13 +31,13 @@ class TodoRowWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(text),
-          content: const Text('Hello, World!'),
+          content: const Text('Description'),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
                 textStyle: Theme.of(context).textTheme.labelLarge,
               ),
-              child: const Text('Disable'),
+              child: const Text('Close'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

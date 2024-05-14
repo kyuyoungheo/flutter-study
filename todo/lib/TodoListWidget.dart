@@ -29,12 +29,14 @@ class _TodoListState extends State<TodoListWidget> {
         child: ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: todos.length,
-            itemBuilder: (context, index) {
-              return Container(
+            itemBuilder: (context, index) =>
+              Container(
                   height: 50,
                   color: Colors.amber[500],
-                  child: Center(child: TodoRowWidget(text: todos[index])));
-            }),
+                  child: Center(child: TodoRowWidget(text: todos[index])
+                  )
+              )
+            ),
       ),
       TextField(
         decoration: const InputDecoration(
